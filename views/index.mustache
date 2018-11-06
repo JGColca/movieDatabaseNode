@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+<body>
+        <form action="/add-movie" method="POST">
+            
+            Title: <input type="textbox" name="movieTitle"/>
+            Year: <input type="textbox" name="movieYear"/>
+            Genre: <input type="textbox" name="movieGenre"/>
+            Poster Link: <input type="textbox" name="moviePoster"/>
+            <input type="submit" value="Add Movie"/>
+            
+            </form>
+
+
+
+<ul>
+    {{#movies}}
+       
+            <li>
+            <form action="/delete-movie" method="POST">
+            <label>{{movieTitle}}</label>
+            <label>{{movieYear}}</label>
+            <label>{{movieGenre}}</label>
+            <a href="{{moviePoster}}" target="_blank">{{movieTitle}} Poster</a>
+            <input type="hidden" name="movieTitle" value="{{movieTitle}}"/>
+            <input type="hidden" name="movieYear" value="{{movieYear}}"/>
+            <input type="hidden" name="movieGenre" value="{{movieGenre}}"/>
+            <input type="hidden" name="moviePoster" value="{{moviePoster}}"/>
+            <input type="submit" value="Remove"/>
+            </form>
+            </li>
+       
+    {{/movies}}
+</ul>
+
+<form action="/movies/:genre/:year" method="GET">
+            
+            Search Genre: <input type="textbox" name="genre"/>
+            Search Year: <input type="textbox" name="year"/>
+            <input type="submit" value="Search Movies"/>
+</form>
+
+</body>
+</html>
